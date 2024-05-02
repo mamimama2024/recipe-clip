@@ -1,0 +1,14 @@
+<h1>Recipes</h1>
+<%= link_to "レシピを投稿する", new_recipe_path %>
+
+<% @recipes.each do |recipe| %>
+  <div class="recipe">
+    <h2><%= link_to recipe.title, recipe.original_url %></h2>
+    <% if recipe.image_url.present? %>
+      <%= image_tag recipe.image_url %>
+    <% end %>
+    <% if recipe.description_url.present? %>
+      <%= recipe.description_url %></p>
+    <% end %>
+  </div>
+<% end %>
