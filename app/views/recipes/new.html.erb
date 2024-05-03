@@ -1,5 +1,5 @@
 <%= form_with(model: @recipe, url: recipes_path, local: false, remote: true) do |f| %>
-  <div class="field">
+    <div class="field">
     <%= f.label :original_url %>
     <%= f.text_field :original_url, id: "original_url" %>
   </div>
@@ -23,5 +23,3 @@
     <%= f.submit "レシピを保存" %>  
   </div>
 <% end %>
-
-<%= javascript_include_tag "fetch_recipe_info" %>

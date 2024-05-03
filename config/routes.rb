@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :recipes do
-    get '/fetch_recipe_info', to: 'recipes#fetch_info'
+    post 'fetch_data', to: 'recipes#fetch_data'
+    get 'fetch_data', to: 'recipes#fetch_data'
   end
   root 'recipes#index'
 end
