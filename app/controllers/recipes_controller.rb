@@ -1,11 +1,27 @@
+require 'open-uri'
+require 'nokogiri'
+
 class RecipesController < ApplicationController
-  require 'open-uri'
   before_action :fetch_info, only: :fetch_info
 
   def index
     @recipes = Recipe.all.order(created_at: :desc)
   end
 
+  def fetch_data
+    url = params[:url]
+    doc = Nokogiri::HTML(open(url))
+
+    @title = doc.title
+    @image_url = doc.at_css('meta[property="og:image"]')&.[]('content')
+    @description = doc.at_css('meta[property="og:description"]')&.[]('content')
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+=begin
   def new
     @recipe = Recipe.new
   end
@@ -36,5 +52,6 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:original_url, :title, :image_url, :description_url)
   end
+=end
 
 end

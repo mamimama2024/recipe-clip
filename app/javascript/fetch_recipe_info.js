@@ -1,3 +1,12 @@
+window.addEventListener('turbo:load', () => {
+  const originalUrlField = document.getElementById("original_url");
+  originalUrlField.addEventListener("input", () => {
+    const url = originalUrlField.value;
+    console.log(url);
+  });
+});
+
+/*
 document.addEventListener("turbo:load", function() {
   const originalUrlField = document.getElementById("original_url");
   if (originalUrlField) {
@@ -15,6 +24,7 @@ document.addEventListener("turbo:load", function() {
   }
 });
 
+
 function fetchRecipeInfo(url) {
   fetch(`/recipes/fetch_info?url=${encodeURIComponent(url)}`)
     .then(response => response.json())
@@ -31,3 +41,5 @@ function fetchRecipeInfo(url) {
       console.error("Error fetching recipe information:", error);
     });
 }
+
+*/
